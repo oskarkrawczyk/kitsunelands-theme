@@ -1,0 +1,19 @@
+{{!< default}}
+
+{{#post}}
+  <div id="single-entry" class="mCont {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+    <article class="postContent">
+      {{#if feature_image}}
+        <img class="featureImage" src="{{feature_image}}">
+      {{/if}}
+
+      {{content}}
+    </article>
+  </div>
+{{/post}}
+
+{{#contentFor "headerTitle"}}
+  <h1>
+    <a href="{{@site.url}}" title="{{@site.title}}">Cześć! <br>Fajnie, że jesteś</a>
+  </h1>
+{{/contentFor}}

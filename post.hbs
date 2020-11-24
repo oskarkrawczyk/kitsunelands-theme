@@ -1,0 +1,86 @@
+{{!< default}}
+
+{{#post}}
+  <div id="single-entry" class="mCont {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+    <h2 class="postTitle">{{title}}</h2>
+    <ul class="meta">
+      {{#foreach tags}}
+        <li><a href="{{url}}">{{name}}</a></li>
+      {{/foreach}}
+      <li>{{date format="DD MMMM YYYY"}}</li>
+    </ul>
+
+    <article class="postContent">
+      {{#if feature_image}}
+        <img class="featureImage" src="{{feature_image}}">
+      {{/if}}
+
+      {{content}}
+    </article>
+
+    <section id="author">
+      {{#has author="count:>1"}}
+        {{> "byline-multiple"}}
+      {{else}}
+        {{> "byline-single"}}
+      {{/has}}
+    </section>
+
+    {{!-- Links to Previous/Next posts --}}
+    {{> "prev-next"}}
+  </div>
+{{/post}}
+
+{{#contentFor "headerTitle"}}
+  <h1>
+    <a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a>
+  </h1>
+{{/contentFor}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+  <script>
+    $(document).ready(function(){
+      // Start fitVids
+      var $postContent = $("#single-entry")
+      $postContent.fitVids()
+      // End fitVids
+    })
+
+    var images = document.querySelectorAll(".kg-gallery-image img")
+    images.forEach(function(image){
+      var container = image.closest(".kg-gallery-image")
+      var width = image.attributes.width.value
+      var height = image.attributes.height.value
+      var ratio = width / height
+      container.style.flex = `${ratio} 1 0%`
+    })
+
+    function loadStyle (href) {
+      const linkElement = document.createElement('link')
+      linkElement.rel = 'stylesheet'
+      linkElement.href = href
+      document.head.appendChild(linkElement)
+    }
+
+    function loadScript (src, callback) {
+      const scriptElement = document.createElement('script')
+      scriptElement.src = src
+      callback && scriptElement.addEventListener('load', callback)
+      document.body.appendChild(scriptElement)
+    }
+
+    let galleryContainers = document.querySelectorAll('.kg-gallery-container')
+    if (galleryContainers.length){
+      loadStyle('https://unpkg.com/lightgallery.js/dist/css/lightgallery.min.css')
+      loadScript('https://unpkg.com/lightgallery.js/dist/js/lightgallery.js', () => {
+        galleryContainers.forEach(item => {
+          item.querySelectorAll('.kg-gallery-image').forEach(sub => {
+            sub.dataset.src = sub.children[0].src
+          })
+          window.lightGallery(item, { selector: '.kg-gallery-image' })
+        })
+      })
+    }
+  </script>
+{{/contentFor}}

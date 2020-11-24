@@ -1,0 +1,17 @@
+<section class="entry {{#if featured}}featured{{/if}}">
+  {{#if feature_image}}
+    <a href="{{url}}">
+      <img src="{{feature_image}}">
+    </a>
+  {{/if}}
+  <div class="details">
+    <h3><a href="{{url}}">{{title}}</a></h3>
+    <p>{{excerpt words="30"}}</p>
+    <ul class="meta">
+      {{#foreach tags}}
+        <li><a href="{{url}}">{{name}}</a></li>
+      {{/foreach}}
+      <li>{{date format="DD MMMM YYYY"}}</li>
+    </ul>
+  </div>
+</section>
