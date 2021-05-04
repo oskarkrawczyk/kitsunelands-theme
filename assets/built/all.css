@@ -442,7 +442,8 @@ header {
   #single-entry .postContent .kg-image-card {
     text-align: center; }
     #single-entry .postContent .kg-image-card img {
-      max-width: 100%; }
+      max-width: 100%;
+      height: auto; }
     #single-entry .postContent .kg-image-card.kg-width-wide {
       position: relative;
       width: 800px;
