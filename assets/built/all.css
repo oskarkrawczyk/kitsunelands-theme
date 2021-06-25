@@ -145,6 +145,16 @@ header {
       header .mCont {
         padding: 0 0 0 20px; } }
 
+#featured-post header {
+  padding: 80px 0 40px; }
+  #featured-post header h1 {
+    font-size: 34px;
+    width: 200px; }
+  #featured-post header .mCont {
+    padding: 0 0;
+    display: grid;
+    grid-template-columns: 200px minmax(350px, auto); }
+
 #author-info {
   display: flex;
   align-items: center;
@@ -184,6 +194,13 @@ header {
     position: relative; }
   #author-info .tumblr {
     margin-left: 8px; }
+
+#featured-post #author-info {
+  margin-top: 0; }
+  #featured-post #author-info .imageCont,
+  #featured-post #author-info .imageCont img {
+    height: 35px;
+    width: 35px; }
 
 #main-nav {
   position: absolute;
@@ -371,6 +388,14 @@ header {
     font-family: "Noto Serif";
     font-weight: 700;
     margin: 60px 0 40px; }
+  #single-entry .featuredPostImage {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    top: -1px;
+    margin-left: -50vw;
+    margin-right: -50vw; }
   #single-entry .postContent .featureImage {
     float: right;
     max-width: 350px;

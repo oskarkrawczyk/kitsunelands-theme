@@ -2,21 +2,43 @@
 
 {{#post}}
   <div id="single-entry" class="mCont {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
-    <h2 class="postTitle">{{title}}</h2>
-    <ul class="meta">
-      {{#foreach tags}}
-        <li><a href="{{url}}">{{name}}</a></li>
-      {{/foreach}}
-      <li>{{date format="DD MMMM YYYY"}}</li>
-    </ul>
+    {{#if featured}}
 
-    <article class="postContent">
       {{#if feature_image}}
-        <img class="featureImage" src="{{feature_image}}">
+        <img class="featuredPostImage" src="{{feature_image}}">
       {{/if}}
 
-      {{content}}
-    </article>
+      <h2 class="postTitle">{{title}}</h2>
+      <ul class="meta">
+        {{#foreach tags}}
+          <li><a href="{{url}}">{{name}}</a></li>
+        {{/foreach}}
+        <li>{{date format="DD MMMM YYYY"}}</li>
+      </ul>
+
+      <article class="postContent">
+        {{content}}
+      </article>
+
+      {{#contentFor "featured_post"}}featured-post{{/contentFor}}
+    {{else}}
+
+      <h2 class="postTitle">{{title}}</h2>
+      <ul class="meta">
+        {{#foreach tags}}
+          <li><a href="{{url}}">{{name}}</a></li>
+        {{/foreach}}
+        <li>{{date format="DD MMMM YYYY"}}</li>
+      </ul>
+
+      <article class="postContent">
+        {{#if feature_image}}
+          <img class="featureImage" src="{{feature_image}}">
+        {{/if}}
+
+        {{content}}
+      </article>
+    {{/if}}
 
     <section id="author">
       {{#has author="count:>1"}}
