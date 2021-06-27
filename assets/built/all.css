@@ -154,6 +154,9 @@ header {
     padding: 0 0;
     display: grid;
     grid-template-columns: 200px minmax(350px, auto); }
+    @media (max-width: 667px) {
+      #featured-post header .mCont {
+        padding: 0 15px; } }
 
 #author-info {
   display: flex;
@@ -189,6 +192,9 @@ header {
       stroke: #D32929; }
   #author-info span {
     margin: 0 10px 0 20px; }
+    @media (max-width: 667px) {
+      #author-info span {
+        display: none; } }
   #author-info a {
     margin-left: 12px;
     position: relative; }
@@ -384,10 +390,14 @@ header {
   #single-entry h2.postTitle {
     text-align: center;
     font-size: 38px;
-    line-height: 45px;
+    line-height: 1.28em;
     font-family: "Noto Serif";
     font-weight: 700;
     margin: 60px 0 40px; }
+    @media (max-width: 667px) {
+      #single-entry h2.postTitle {
+        font-size: 26px;
+        margin: 30px 0 20px; } }
   #single-entry .featuredPostImage {
     position: relative;
     width: 100vw;
